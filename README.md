@@ -4,7 +4,7 @@ Aplikacja Next.js (App Router), React i TypeScript. Granatowy motyw, biała typo
 
 ## Podgląd online przed konfiguracją usług
 
-Adres online: https://zdrowie-bez-sciemy.vercel.app
+Adres online: https://zdrowiebezsciemy.pl
 
 Repozytorium: https://github.com/qzperf/qz-performance-strona. Vercel automatycznie wdraża zmiany wypchnięte na `main` w projekcie `qz16/zdrowie-bez-sciemy`. Stały adres strony wskazuje ostatnie udane wdrożenie.
 

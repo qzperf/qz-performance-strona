@@ -15,7 +15,7 @@ Repository: https://github.com/qzperf/qz-performance-strona
 Production branch: main.
 Vercel team: qz16 (team_jNt0KC6eEAFZ3ZzGw6L7RDqF).
 Vercel project: zdrowie-bez-sciemy (prj_bM2wyG5Q8AjRZS8fsCpoRdgukZ6y).
-Public production URL: https://zdrowie-bez-sciemy.vercel.app
+Public production URL: https://zdrowiebezsciemy.pl
 
 The user currently wants an online preview. Keep hosted forms, admin, and purchases inactive until backend setup is requested and configured. Public pages work without Supabase using demonstrative content. This functional preview is served on the production domain so routine pushes to main update the same URL.
 
