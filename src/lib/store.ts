@@ -4,6 +4,7 @@ import { readFile, writeFile, mkdir, rename } from "node:fs/promises";
 import path from "node:path";
 import { defaultSettings, seedProducts } from "./catalog";
 import type { Product, Review, Message, Settings } from "./types";
+import { isHostedPreview } from "./availability";
 type LocalStore = { settings: Settings; products: Product[]; reviews: Review[]; messages: Message[]; limits: Record<string, { count: number; until: number }> };
 export function supabase() {
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) return null;
@@ -27,6 +28,7 @@ function mutate<T>(fn: (data: LocalStore) => T): Promise<T> {
   queue = next.catch(() => undefined); return next;
 }
 async function all<T>(table: string, localKey: "products" | "reviews" | "messages"): Promise<T[]> {
+  if (isHostedPreview()) return (localKey === "products" ? seedProducts : []) as T[];
   const db = supabase();
   if (!db) { await queue; return (await localRead())[localKey] as T[]; }
   const { data, error } = await db.from(table).select("data"); if (error) throw error;
@@ -36,6 +38,7 @@ async function upsert(table: string, id: string, data: unknown) {
   const { error } = await supabase()!.from(table).upsert({ id, data }); if (error) throw error;
 }
 export async function getSettings(): Promise<Settings> {
+  if (isHostedPreview()) return defaultSettings;
   const db = supabase(); if (!db) { await queue; return (await localRead()).settings; }
   const { data, error } = await db.from("zbs_settings").select("data").eq("id", "main").maybeSingle();
   if (error) throw error; return { ...defaultSettings, ...(data?.data || {}) };

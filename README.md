@@ -2,6 +2,10 @@
 
 Aplikacja Next.js (App Router), React i TypeScript. Granatowy motyw, biała typografia, ciemna zieleń i pomarańczowe akcenty. Projekt jest przygotowany pod Vercel.
 
+## Podgląd online przed konfiguracją usług
+
+Na Vercelu, gdy nie ustawiono obu zmiennych Supabase, aplikacja pokazuje katalog demonstracyjny i domyślne treści. Formularze i panel autora są nieaktywne; próba zapisu przez API zwraca 503. Ta wersja nie przyjmuje zgłoszeń ani płatności i ma ustawione noindex. Nie zapisuje danych w nietrwałym systemie plików hostingu. Po skonfigurowaniu bazy wraca pełna obsługa danych; poczta i płatności nadal wymagają swoich kluczy.
+
 ## Uruchomienie na tym laptopie
 
 1. Otwórz `URUCHOM.cmd`. Uruchamia serwer w tle i otwiera stronę w przeglądarce.

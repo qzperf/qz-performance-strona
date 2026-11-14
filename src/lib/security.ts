@@ -3,9 +3,11 @@ import { cookies } from "next/headers";
 import { createHmac } from "node:crypto";
 import { verifyToken } from "./tokens";
 import { rateLimit } from "./store";
+import { isHostedPreview } from "./availability";
 export const siteUrl = () => (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
 export async function isAdmin() { return verifyToken((await cookies()).get("zbs_admin")?.value || "", "admin") === "owner"; }
 export async function guard(request: Request, bucket: string, max = 5) {
+  if (isHostedPreview()) return Response.json({ error: "To podgląd strony. Formularze uruchomimy wkrótce." }, { status: 503 });
   const origin = request.headers.get("origin");
   if (!origin || ![new URL(request.url).origin, siteUrl()].includes(origin)) return Response.json({ error: "Odśwież stronę i spróbuj ponownie." }, { status: 403 });
   const ip = process.env.VERCEL ? (request.headers.get("x-vercel-forwarded-for") || "unknown") : "local";
