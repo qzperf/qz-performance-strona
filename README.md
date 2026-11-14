@@ -4,6 +4,10 @@ Aplikacja Next.js (App Router), React i TypeScript. Granatowy motyw, biała typo
 
 ## Podgląd online przed konfiguracją usług
 
+Adres online: https://zdrowie-bez-sciemy.vercel.app
+
+Repozytorium: https://github.com/qzperf/qz-performance-strona. Vercel automatycznie wdraża zmiany wypchnięte na `main` w projekcie `qz16/zdrowie-bez-sciemy`. Stały adres strony wskazuje ostatnie udane wdrożenie.
+
 Na Vercelu, gdy nie ustawiono obu zmiennych Supabase, aplikacja pokazuje katalog demonstracyjny i domyślne treści. Formularze i panel autora są nieaktywne; próba zapisu przez API zwraca 503. Ta wersja nie przyjmuje zgłoszeń ani płatności i ma ustawione noindex. Nie zapisuje danych w nietrwałym systemie plików hostingu. Po skonfigurowaniu bazy wraca pełna obsługa danych; poczta i płatności nadal wymagają swoich kluczy.
 
 ## Uruchomienie na tym laptopie

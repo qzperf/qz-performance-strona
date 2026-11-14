@@ -13,6 +13,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 This project belongs to the user and publishes through GitHub to Vercel.
 Repository: https://github.com/qzperf/qz-performance-strona
 Production branch: main.
+Vercel team: qz16 (team_jNt0KC6eEAFZ3ZzGw6L7RDqF).
+Vercel project: zdrowie-bez-sciemy (prj_bM2wyG5Q8AjRZS8fsCpoRdgukZ6y).
+Public production URL: https://zdrowie-bez-sciemy.vercel.app
+
+The user currently wants an online preview. Keep hosted forms, admin, and purchases inactive until backend setup is requested and configured. Public pages work without Supabase using demonstrative content. This functional preview is served on the production domain so routine pushes to main update the same URL.
 
 The user authorized routine website changes requested in this chat to be implemented, checked, committed, and pushed to origin/main. Do not ask for a separate routine publishing confirmation. Verify the deployment outcome when access is available; clearly distinguish a successful Git push from a verified Vercel deployment.
 
