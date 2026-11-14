@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.env*
+!.env.example
+data/
+*.log
+*.tsbuildinfo
+.vercel/
+work/
+DOSTEP-DO-PANELU.txt
+server.pid

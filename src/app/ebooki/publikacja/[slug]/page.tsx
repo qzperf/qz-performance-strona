@@ -1,0 +1,16 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { AudioLines, BookOpen, Check, ChevronLeft, Download, ShieldCheck } from "lucide-react";
+import { getProducts, getSettings } from "@/lib/store";
+import { categories, formatLabel, money } from "@/lib/catalog";
+import { BookCover, ProductCard } from "@/components/ui";
+import { BuyButton } from "@/components/buy-button";
+type Props = { params: Promise<{ slug: string }> };
+export async function generateMetadata({ params }: Props): Promise<Metadata> { const { slug } = await params; return { title: (await getProducts()).find(p => p.slug === slug)?.title || "Publikacja" }; }
+export default async function ProductPage({ params }: Props) {
+  const { slug } = await params; const [products, settings] = await Promise.all([getProducts(), getSettings()]); const p = products.find(p => p.slug === slug); if (!p) notFound();
+  const category = categories.find(c => c.slug === p.category);
+  const ready = !!(process.env.STRIPE_SECRET_KEY && process.env.STRIPE_WEBHOOK_SECRET && process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY && process.env.RESEND_API_KEY && process.env.MAIL_FROM && process.env.CONTACT_EMAIL && settings.terms && settings.privacy && p.filePath);
+  return <div className="container product-page"><Link href={`/ebooki/${p.category}`} className="back-link"><ChevronLeft size={16}/>{category?.title || "Biblioteka"}</Link><div className="product-detail"><div className={`product-detail-art art-${p.color}`}><BookCover product={p} large/><span>{formatLabel(p.format)}</span></div><div className="product-detail-copy"><p className="eyebrow"><span/>{p.demo ? "PRZYKŁADOWA PUBLIKACJA" : "AUTORSKA PUBLIKACJA"}</p><h1>{p.title}<em>.</em></h1><p className="product-subtitle">{p.subtitle}</p><p>{p.description}</p><div className="product-facts">{p.pages > 0 && <span><BookOpen size={19}/>{p.pages} stron</span>}{p.duration && <span><AudioLines size={20}/>{p.duration}</span>}</div><div className="purchase-price">{money(p.price)}<span>{p.demo ? "Cena przykładowa" : "Cena brutto, płatność jednorazowa"}</span></div><BuyButton productId={p.id} demo={p.demo} ready={ready}/><p className="download-note"><Download size={16}/>Publikacja cyfrowa{p.format === "ebook" ? " · PDF / EPUB" : p.format === "audio" ? " · nagranie audio" : " · e-book i nagranie audio"}</p></div></div><section className="product-contents section"><div><p className="eyebrow"><span/>CO ZNAJDZIESZ W ŚRODKU</p><h2>Od podstaw<br/><span className="muted-heading">do praktyki.</span></h2><p>{p.demo ? "Przykładowy zakres tematyczny — finalną zawartość określi autorska publikacja." : "Poznaj zakres publikacji i sprawdź, czy odpowiada na Twoje pytania."}</p></div><ol>{p.contents.map((item, i) => <li key={i}><span>0{i + 1}</span>{item}<Check size={17}/></li>)}</ol></section>{products.filter(v => v.id !== p.id).length > 0 && <section className="section"><p className="eyebrow"><span/>JESZCZE WIĘCEJ WIEDZY</p><h2>To też może Cię zainteresować.</h2><div className="related-grid">{products.filter(v => v.id !== p.id).slice(0, 3).map(v => <ProductCard key={v.id} product={v}/>)}</div></section>}</div>;
+}

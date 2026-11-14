@@ -1,0 +1,12 @@
+import { spawn } from "node:child_process";
+import { writeFileSync, existsSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+const project = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+process.chdir(project);
+process.env.NEXT_TELEMETRY_DISABLED = "1";
+const mode = existsSync(path.join(project, ".next", "BUILD_ID")) ? "start" : "dev";
+writeFileSync(path.join(project, "server.pid"), String(process.pid));
+const child = spawn(process.execPath, [path.join(project, "node_modules", "next", "dist", "bin", "next"), mode, "--hostname", "127.0.0.1", "--port", "3000"], { cwd: project, stdio: "inherit", windowsHide: true });
+for (const signal of ["SIGINT", "SIGTERM"]) process.on(signal, () => { child.kill(); process.exit(0); });
+child.on("exit", code => process.exit(code || 0));
