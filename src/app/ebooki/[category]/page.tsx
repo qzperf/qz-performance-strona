@@ -9,5 +9,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> { c
 export default async function CategoryPage({ params }: Props) {
   const { category } = await params; const item = categories.find(c => c.slug === category); if (!item) notFound();
   const [products, settings] = await Promise.all([getProducts(), getSettings()]);
-  return <div className="container catalog-page"><PageHeading eyebrow="E-BOOKI I AUDIOBOOKI" title={<><span className="heading-icon"><CategoryIcon name={item.icon} size={35}/></span>{item.title}<em>.</em></>}><p>{item.description}</p></PageHeading><CatalogBrowser products={products} category={category} settings={{ sportsPhotos: settings.sportsPhotos }}/></div>;
+  return <div className="container catalog-page"><PageHeading eyebrow="E-BOOKI I AUDIOBOOKI" title={<><span className="heading-icon"><CategoryIcon name={item.icon} size={35}/></span>{item.title}</>}><p>{item.description}</p></PageHeading><CatalogBrowser products={products} category={category} settings={{ sportsPhotos: settings.sportsPhotos }}/></div>;
 }

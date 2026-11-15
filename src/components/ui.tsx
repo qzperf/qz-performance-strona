@@ -3,7 +3,7 @@ import { Activity, ArrowDown, ArrowUpRight, AudioLines, BookOpen, Brain, Dumbbel
 import { formatLabel, money } from "@/lib/catalog";
 import type { Product } from "@/lib/types";
 export function Brand({ small = false }: { small?: boolean }) {
-  return <Link href="/" className={`brand ${small ? "brand-small" : ""}`} aria-label="Zdrowie Bez Ściemy — strona główna"><svg viewBox="0 0 48 54" fill="none" aria-hidden="true"><path d="M24 3 44 11v15c0 12-11 21-20 25C15 47 4 38 4 26V11L24 3Z" stroke="currentColor" strokeWidth="2"/><path d="M11 25c14-1 17 7 14 19-10-1-15-8-14-19Z" fill="#558d72"/><path d="M37 18c-12 1-19 10-15 23 11-1 16-10 15-23Z" fill="#d3e5d4"/><path d="m15 30 9 12 9-18" stroke="#0d1b2a" strokeWidth="1.8"/><circle cx="24" cy="15" r="4" fill="#f48a47"/></svg><span>Zdrowie<span>Bez Ściemy<span className="brand-dot">.</span></span></span></Link>;
+  return <Link href="/" className={`brand ${small ? "brand-small" : ""}`} aria-label="Zdrowie Bez Ściemy — strona główna"><svg viewBox="0 0 48 54" fill="none" aria-hidden="true"><path d="M24 3 44 11v15c0 12-11 21-20 25C15 47 4 38 4 26V11L24 3Z" stroke="currentColor" strokeWidth="2"/><path d="M11 25c14-1 17 7 14 19-10-1-15-8-14-19Z" fill="#558d72"/><path d="M37 18c-12 1-19 10-15 23 11-1 16-10 15-23Z" fill="#d3e5d4"/><path d="m15 30 9 12 9-18" stroke="#0d1b2a" strokeWidth="1.8"/><circle cx="24" cy="15" r="4" fill="#f48a47"/></svg><span>Zdrowie<span>Bez Ściemy</span></span></Link>;
 }
 export function CategoryIcon({ name, size = 25 }: { name: string; size?: number }) {
   const Icon = ({ body: PersonStanding, dumbbell: Dumbbell, leaf: Leaf, moon: Moon, activity: Activity, move: Move, heart: HeartPulse, brain: Brain, run: Footprints } as Record<string, typeof Activity>)[name] || Activity;

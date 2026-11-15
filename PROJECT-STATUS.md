@@ -13,7 +13,7 @@ Aktualizacja: 15 listopada 2026. Przed kolejnymi zmianami sprawdź aktualny stan
 
 ## Obecny zakres
 
-Strona Next.js obejmuje stronę główną, katalog dziewięciu kategorii e-booków i audiobooków, O mnie, QZ Performance i Kontakt. W katalogu są także dyscypliny sportowe oraz wyzwania wytrzymałościowe. Tekst menu na większych ekranach został powiększony; wersja telefonu pozostała bez zmian.
+Strona Next.js obejmuje stronę główną, katalog dziewięciu kategorii e-booków i audiobooków, O mnie, QZ Performance i Kontakt. W katalogu są także dyscypliny sportowe oraz wyzwania wytrzymałościowe. Tekst menu na większych ekranach został powiększony. Usunięto ozdobne kropki po nazwach kategorii i publikacji oraz na końcu logo w nagłówku i stopce. Przycisk „Odkryj e-booki” ma większy tekst, ikonę i pole kliknięcia.
 
 Wersja online jest na razie podglądem: treści i publikacje są demonstracyjne, a formularze, panel autora oraz sprzedaż nie działają online. Strona ma ustawione noindex. Lokalnie istnieje panel i zapis danych; lokalne dane nie przenoszą się automatycznie na hosting.
 
